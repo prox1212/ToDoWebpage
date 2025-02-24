@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+    font-family: Arial;
+}
+
+p .displayTasks {
+    border: 20px;
+    border-color: black;
+    border-radius: 15px;
+}
