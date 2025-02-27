@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do Webpage</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="javafunctions.js"></script>
 </head>
 
 <body>
@@ -16,12 +17,14 @@
         <h2>View all your pending tasks.</h2>
 
         <div class="createTask">
-            <p>Add a task: <input type="text" placeholder="Task name"></p>
-            <p>Task Priority: <input type="text" placeholder="1 = high, 9 = low"></p>
+            <p>Add a task: <input type="text" placeholder="Task name" id = "T_NAME"></p>
+            <p>Task Priority: <input type="text" placeholder="1 = high, 9 = low" id = "T_PRIORITY"></p>
+            <button onclick="addtask()">Add Task</button>
         </div>
         
         <div class="displayTasks">
             <p>Tasks</p>
+            <p id = "T_DISPLAY"></p>
         </div>
     </article>
 

@@ -8,3 +8,7 @@ p .displayTasks {
     border-color: black;
     border-radius: 15px;
 }
+
+#T_DISPLAY{
+ white-space: pre;
+}
