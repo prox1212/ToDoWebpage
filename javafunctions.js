@@ -42,14 +42,16 @@ function logTask() {
 }
 
 function deleteTask(clicked_id) {
-    console.log("task deleted: " + (clicked_id))
-
-    const element = document.getElementById(clicked_id);
-    element.remove();
+    console.log("task deleted: " + (clicked_id));
 
     let task = document.getElementById(clicked_id);
     let taskName = task.value;
 
-    let taskLocation = indexOf(taskName)
-    delete taskList[(taskLocation)]
+    let taskLocation = taskList.indexOf(taskName);
+    taskList.splice(taskLocation, 1);
+
+    console.log(taskList)
+
+    const element = document.getElementById(clicked_id);
+    element.remove();
 }
