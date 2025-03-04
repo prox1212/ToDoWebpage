@@ -18,18 +18,24 @@ function logTask() {
         console.log("Task added:", taskValue); // log the task name
         taskList.push(taskValue);
 
+        // create div for task
+        let div = document.createElement("div");
+        div.setAttribute("id", ("task" + (taskCount)));
+        div.setAttribute("class", ("taskItem"));
+        document.getElementById("displayTasks").appendChild(div);
+
         // task details
         let tasks = document.createElement("p"); // create a new paragraph element for the task
         tasks.setAttribute("id", ("task" + (taskCount))); // gives each task its own unique id
         tasks.innerHTML = String(taskList[taskCount]);
-        document.getElementById("displayTasks").appendChild(tasks);
+        document.getElementById("task" + (taskCount)).appendChild(tasks);
 
         // delete button
         let deleteBtn = document.createElement("button"); // create a button so that the task can be eddited (deleted)
         deleteBtn.setAttribute("id", ("task" + (taskCount))); // sets the delete button to the same id as its corresponding task
         deleteBtn.setAttribute("onclick", ("deleteTask(this.id)")) // using the this.id parameter to pass the id of the button that was clicked
         deleteBtn.innerHTML = ("Delete");
-        document.getElementById("displayTasks").appendChild(deleteBtn);
+        document.getElementById("task" + (taskCount)).appendChild(deleteBtn);
 
         taskCount += 1;
     }
@@ -40,4 +46,10 @@ function deleteTask(clicked_id) {
 
     const element = document.getElementById(clicked_id);
     element.remove();
+
+    let task = document.getElementById(clicked_id);
+    let taskName = task.value;
+
+    let taskLocation = indexOf(taskName)
+    delete taskList[(taskLocation)]
 }
