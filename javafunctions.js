@@ -1,6 +1,6 @@
 // creating a task
-const taskList = {}
-let taskCount = 0
+const taskList = {} // dictionary for tasks and their unique id
+let taskCount = 0 // for giving each task a unique id
 function logTask() {
     let taskInput = document.getElementById("taskName"); // get the input element
     let taskValue = taskInput.value; // get the value from the input field
@@ -35,7 +35,7 @@ function logTask() {
     document.getElementById("task" + (taskCount)).appendChild(tasks);
 
     // delete button
-    let deleteBtn = document.createElement("button"); // create a button so that the task can be eddited (deleted)
+    let deleteBtn = document.createElement("button"); // create a button so that the task can be edited (deleted)
     deleteBtn.setAttribute("id", ("task" + (taskCount))); // sets the delete button to the same id as its corresponding task
     deleteBtn.setAttribute("onclick", ("deleteTask(this.id)")) // using the this.id parameter to pass the id of the button that was clicked
     deleteBtn.innerHTML = ("Delete");
@@ -53,4 +53,13 @@ function deleteTask(clicked_id) {
 
     const element = document.getElementById(clicked_id);
     element.remove(); // removes the elements from the page so that the user doesnt see the task anymore
+}
+
+function deleteAllTasks() {
+    document.getElementById('displayTasks').innerHTML = ''; // clears the displayTasks div of all elements
+    taskList = {} // clears all records from the task dictionary
+    taskCount = 0 // resets unique id count to 0
+    
+    console.log("erased all tasks.") // debugging
+    console.log(taskList, taskCount)
 }
