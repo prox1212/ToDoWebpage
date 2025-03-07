@@ -34,6 +34,14 @@ function logTask() {
     tasks.innerHTML = String(taskName);
     document.getElementById("task" + (taskCount)).appendChild(tasks);
 
+    // mark tasks as complete
+    let checkbox = document.createElement("input"); // create input
+    let mark_complete = document.createElement("label"); // create label for checkbox
+    checkbox.type = "checkbox"; // set input to checkbox for users to mark their tasks as complete with
+    mark_complete.append("Mark task as complete");
+    mark_complete.appendChild(checkbox); // attach label to checkbox
+    document.getElementById("task" + (taskCount)).appendChild(mark_complete);
+
     // delete button
     let deleteBtn = document.createElement("button"); // create a button so that the task can be edited (deleted)
     deleteBtn.setAttribute("id", ("task" + (taskCount))); // sets the delete button to the same id as its corresponding task
