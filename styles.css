@@ -1,14 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-bottom: 20px; /* add space below the heading */
+}
+
+h2 {
+    margin-bottom: 15px; /* add space below the subheading */
+}
+
+p {
+    margin-top: 15px; /* add space below the text box */
+}
+
 body {
     text-align: center;
     font-family: Arial;
+    color: aliceblue;
+    padding: 25px;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #1a0b2b, #201b35 100%);
+    overflow-y: auto; /* enables vertical scrolling */
 }
 
-p .displayTasks {
-    border: 20px;
-    border-color: black;
-    border-radius: 15px;
+article {
+  text-align: center;
 }
 
-#T_DISPLAY{
- white-space: pre;
+/* adds space between text box/ tasks and the delete all button*/
+.deleteAll {
+    margin-top: 15px;
+}
+
+/* align task and button correctly */
+.taskItem {
+    display: flex;
+    align-items: center; /* aligns text and button vertically */
+    justify-content: space-between; /* adds space between text and button */
+    background-color: #16171d; /* adds a background for visibility */
+    padding: 20px;
+    margin: 5px 0;
+    border-radius: 8px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.taskItem button {
+    margin-left: 10px; /* adds spacing between text and button */
+}
+
+button {
+  background-color: #111827;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  flex-shrink: 0;
+}
+
+button:hover {
+  background-color: #374151;
+}
+
+button:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: .75rem 1.5rem;
+  }
+}
+
+.createTask {
+    display: flex;
+    align-items: center; /* align vertically */
+    justify-content: center; /* center content horizontally */
+    gap: 10px; /* space between input and button */
+    max-width: 400px;
+    margin: 0 auto; /* center the container itself */
+}
+
+#deleteAll:hover {
+  background-color: #7c2323;
+}
+
+.input {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    height: 45px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+    border: 0;
+    border-radius: 12px;
+    background-color: #16171d;
+    outline: none;
+    color: #bdbecb;
+    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: text;
+    z-index: 0;
+    flex: 1; /* makes the input take up remaining space */
+    min-width: 200px; /* prevents it from becoming too small */
+}
+  
+.input::placeholder {
+    color: #bdbecb;
+}
+  
+.input:hover {
+    box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+}
+  
+.input:active {
+    transform: scale(0.95);
+}
+  
+.input:focus {
+    box-shadow: 0 0 0 2.5px #2f303d;
 }

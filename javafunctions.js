@@ -63,6 +63,7 @@ function deleteTask(clicked_id) {
     element.remove(); // removes the elements from the page so that the user doesnt see the task anymore
 }
 
+// deleting all tasks
 function deleteAllTasks() {
     document.getElementById('displayTasks').innerHTML = ''; // clears the displayTasks div of all elements
     taskList = {} // clears all records from the task dictionary
