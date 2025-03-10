@@ -38,6 +38,8 @@ function logTask() {
     let checkbox = document.createElement("input"); // create input
     let mark_complete = document.createElement("label"); // create label for checkbox
     checkbox.type = "checkbox"; // set input to checkbox for users to mark their tasks as complete with
+    checkbox.setAttribute("id", ("task" + (taskCount))); // sets unique id for checkbox
+    checkbox.setAttribute("class", ("completed")); // sets class completed so we can find it when its selected
     mark_complete.append("Mark task as complete");
     mark_complete.appendChild(checkbox); // attach label to checkbox
     document.getElementById("task" + (taskCount)).appendChild(mark_complete);
@@ -71,4 +73,29 @@ function deleteAllTasks() {
     
     console.log("erased all tasks.") // debugging
     console.log(taskList, taskCount)
+}
+
+// deleting all tasks marked as complete
+function deleteAllCompletedTasks() {
+    let completedTasks = [];
+    let checkboxes = document.querySelectorAll(".completed"); // finds all tasks with completed checkboxes
+
+    checkboxes.forEach(checkbox => {
+        
+        if (checkbox.checked) {
+            completedTasks.push(checkbox.id); // store checkbox ids
+        }
+    });
+
+    completedTasks.forEach(taskID => { 
+        delete taskList[taskID]; // remove from the dictionary
+
+        let element = document.getElementById(taskID);
+
+        if (element) {
+            element.remove(); // remove from the page
+        }
+    });
+
+    console.log("Deleted completed tasks:", completedTasks);
 }
