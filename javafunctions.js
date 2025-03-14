@@ -9,8 +9,6 @@ function logTask() {
         console.log("No task entered."); // check if input is empty
         return; // stop execution if no task is entered
     }
-
-
     for (const key in taskList) {
         if (taskList[key].name === taskValue) {
           console.log("This task already exists"); // loop to find duplicate task names
@@ -18,6 +16,11 @@ function logTask() {
     }
 
     console.log("Task added:", taskValue); // log the task name
+   assembleTask(taskValue);
+   //save task to local storage
+   localStorage.setItem("dictionary",JSON.stringify(taskList));
+}
+function assembleTask(taskValue){ //separate function for putting tasks together (adding delete button and checkbox)
 
     // create div for task
     let div = document.createElement("div");
@@ -43,7 +46,6 @@ function logTask() {
     mark_complete.append("Mark task as complete");
     mark_complete.appendChild(checkbox); // attach label to checkbox
     document.getElementById("task" + (taskCount)).appendChild(mark_complete);
-
     // delete button
     let deleteBtn = document.createElement("button"); // create a button so that the task can be edited (deleted)
     deleteBtn.setAttribute("id", ("task" + (taskCount))); // sets the delete button to the same id as its corresponding task
@@ -51,6 +53,9 @@ function logTask() {
     deleteBtn.innerHTML = ("Delete");
     document.getElementById("task" + (taskCount)).appendChild(deleteBtn);
     taskCount += 1;
+
+    
+    
 }
 
 // deleting a task
@@ -63,16 +68,16 @@ function deleteTask(clicked_id) {
 
     const element = document.getElementById(clicked_id);
     element.remove(); // removes the elements from the page so that the user doesnt see the task anymore
+    localStorage.setItem("dictionary",JSON.stringify(taskList)); //update the list after all the tasks have been removed
 }
 
 // deleting all tasks
 function deleteAllTasks() {
-    document.getElementById('displayTasks').innerHTML = ''; // clears the displayTasks div of all elements
-    taskList = {} // clears all records from the task dictionary
-    taskCount = 0 // resets unique id count to 0
+    for(let id in taskList) //goes through every id in task list and deletes the tasks
+     {
+        deleteTask(id); //call the deletetTask function for every single task id
+     }
     
-    console.log("erased all tasks.") // debugging
-    console.log(taskList, taskCount)
 }
 
 // deleting all tasks marked as complete
@@ -98,4 +103,18 @@ function deleteAllCompletedTasks() {
     });
 
     console.log("Deleted completed tasks:", completedTasks);
+    localStorage.setItem("dictionary",JSON.stringify(taskList)); //update the list after all the tasks have been removed
 }
+
+
+function loadSavedTasks(){ //function used to load tasks from local memory
+    loadList = localStorage.getItem("dictionary"); //fetch the dictionary from local memory
+    save = JSON.parse(loadList); //convert string back to dictionary
+    console.log(save); //debug 
+    for(const key in save) //navigate through the stored task ids
+    {
+       assembleTask(save[key].name); //display each task in the dictionary
+    }
+}  
+   
+  
