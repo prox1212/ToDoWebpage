@@ -30,7 +30,7 @@ function assembleTask(taskValue){ //separate function for putting tasks together
     taskList["task" + taskCount] = ({id: "task" + taskCount, name: taskValue });
 
     // task details
-    let tasks = document.createElement("p"); // create a new paragraph element for the task
+    let tasks = document.createElement("b"); // create a new paragraph element for the task
     tasks.setAttribute("id", ("task" + (taskCount))); // gives each task its own unique id
     const taskID = "task" + taskCount; // creates id
     const taskName = taskList[taskID].name; // gets the name of an object with the specific id
@@ -44,8 +44,10 @@ function assembleTask(taskValue){ //separate function for putting tasks together
     checkbox.setAttribute("id", ("task" + (taskCount))); // sets unique id for checkbox
     checkbox.setAttribute("class", ("completed")); // sets class completed so we can find it when its selected
     mark_complete.append("Mark task as complete");
-    mark_complete.appendChild(checkbox); // attach label to checkbox
+    mark_complete.setAttribute("class", ("checkboxLabel"));
     document.getElementById("task" + (taskCount)).appendChild(mark_complete);
+    document.getElementById("task" + (taskCount)).appendChild(checkbox);
+
     // delete button
     let deleteBtn = document.createElement("button"); // create a button so that the task can be edited (deleted)
     deleteBtn.setAttribute("id", ("task" + (taskCount))); // sets the delete button to the same id as its corresponding task
